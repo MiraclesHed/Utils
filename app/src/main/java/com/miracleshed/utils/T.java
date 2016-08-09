@@ -1,6 +1,7 @@
 package com.miracleshed.utils;
 
 import android.content.Context;
+import android.provider.Settings;
 import android.widget.Toast;
 
 /**
@@ -10,10 +11,13 @@ public class T {
 
     private T() {
         /* cannot be instantiated */
-        throw new UnsupportedOperationException("cannot be instantiated");
+        throw new UnsupportedOperationException("T cannot be instantiated");
     }
 
     public static boolean isShow = true;
+    public static Toast mToast = null;
+    public static long mDuration;
+
 
     /**
      * 短时间显示Toast
@@ -23,7 +27,7 @@ public class T {
      */
     public static void showShort(Context context, CharSequence message) {
         if (isShow)
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+            showT(context, message, Toast.LENGTH_SHORT);
     }
 
     /**
@@ -34,7 +38,7 @@ public class T {
      */
     public static void showShort(Context context, int message) {
         if (isShow)
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+            showT(context, context.getString(message), Toast.LENGTH_SHORT);
     }
 
     /**
@@ -45,7 +49,7 @@ public class T {
      */
     public static void showLong(Context context, CharSequence message) {
         if (isShow)
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+            showT(context, message, Toast.LENGTH_LONG);
     }
 
     /**
@@ -56,7 +60,7 @@ public class T {
      */
     public static void showLong(Context context, int message) {
         if (isShow)
-            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+            showT(context, context.getString(message), Toast.LENGTH_LONG);
     }
 
     /**
@@ -67,7 +71,7 @@ public class T {
      */
     public static void show(Context context, CharSequence message, int duration) {
         if (isShow)
-            Toast.makeText(context, message, duration).show();
+            showT(context, message, duration);
     }
 
     /**
@@ -79,7 +83,22 @@ public class T {
      */
     public static void show(Context context, int message, int duration) {
         if (isShow)
-            Toast.makeText(context, message, duration).show();
+            showT(context, context.getString(message), duration);
+    }
+
+    /**
+     * @param context
+     * @param message
+     * @param duration
+     */
+    public static void showT(Context context, CharSequence message, int duration) {
+        mDuration = duration;
+        if (mToast == null) {
+            mToast = Toast.makeText(context, message, duration);
+        } else {
+            mToast.setText(message);
+        }
+        mToast.show();
     }
 
 }
