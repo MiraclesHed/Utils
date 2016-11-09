@@ -14,7 +14,7 @@ public class StringUtil {
      * @param mobiles
      * @return
      */
-    public static boolean isMobileNO(String mobiles) {
+    public static boolean isMobileNum(String mobiles) {
         //      Pattern p = Pattern
         //              .compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9])|(18[1,0-1]))\\d{8}$");
         Pattern p = Pattern.compile("^1\\d{10}$");
