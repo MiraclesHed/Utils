@@ -45,8 +45,7 @@ public class DensityUtil {
      */
     public static float px2dp(Context context, float pxVal) {
         final float scale = context.getResources().getDisplayMetrics().density;
-        //这里为什么要加0.5？
-        // 为了四舍五入
+        //这里为什么要加0.5？为了四舍五入。
         // 在Java中，float转int是直接把小数位砍掉的(如4.1>4;4.9>4)，所以如果要做到四舍五入就要加0.5(即4.1+0.5=4.6>4;4.9+0.5=5.4>5),保证了结果相对准确。
         return (pxVal / scale + 0.5f);
     }

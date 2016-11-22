@@ -34,12 +34,12 @@ dependencies {
 
 //添加
 publish {
-    userOrg = 'miracleshed'//bintray.com用户名
-    groupId = 'com.miracleshed'//jcenter上的路径
-    artifactId = 'utils'//项目名称
+    userOrg = 'miracleshed'
+    groupId = 'com.miracleshed'
+    artifactId = 'utils'
     publishVersion = '1.0.2'//版本号
     desc = 'Android Develop Utils'//描述
-    website = 'https://github.com/MiraclesHed/Utils'//网站，尽量模拟github上的地址
+    website = 'https://github.com/MiraclesHed/Utils'
 }
 
 tasks.withType(JavaCompile) {
